@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from '../services/authService';
 
+
+
 const SignupForm = (props) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState(['']);
@@ -38,38 +40,41 @@ const SignupForm = (props) => {
 
   return (
     <main>
+      <div className='wrapper'>
       <h1>Sign Up</h1>
-      <p>{message}</p>
       <form onSubmit={handleSubmit}>
-        <div>
+      <div className='input-box'>
            
-          <label htmlFor="username">Username:</label>
+          
           <input
             type="text"
             id="name"
             value={username}
             name="username"
             onChange={handleChange}
+            placeholder='Username'
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className='input-box'>
+          
           <input
             type="password"
             id="password"
             value={password}
             name="password"
             onChange={handleChange}
+            placeholder='Password:'
           />
         </div>
-        <div>
-          <label htmlFor="confirm">Confirm Password:</label>
+        <div className='input-box'>
+         
           <input
             type="password"
             id="confirm"
             value={passwordConf}
             name="passwordConf"
             onChange={handleChange}
+            placeholder='Confirm Password:'
           />
         </div>
         <div>
@@ -79,6 +84,7 @@ const SignupForm = (props) => {
           </Link>
         </div>
       </form>
+      </div>
     </main>
   );
 };

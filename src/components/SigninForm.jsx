@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from '../services/authService';
-import './SigninForm.css'; 
+import './Signin.css'; 
+
+
+
 
 const SigninForm = (props) => {
   const navigate = useNavigate();
@@ -34,12 +37,11 @@ const SigninForm = (props) => {
 
   return (
     <main>
-      
+      <div className='wrapper'>
       <h1>Log In</h1>
-      <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Username:</label>
+        <div className='input-box'>
+          
           <input
             type="text"
             autoComplete="off"
@@ -47,10 +49,11 @@ const SigninForm = (props) => {
             value={formData.username}
             name="username"
             onChange={handleChange}
+            placeholder='Username'
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className='input-box'>
+          
           <input
             type="password"
             autoComplete="off"
@@ -58,6 +61,7 @@ const SigninForm = (props) => {
             value={formData.password}
             name="password"
             onChange={handleChange}
+            placeholder='Password'
           />
         </div>
         <div>
@@ -67,8 +71,9 @@ const SigninForm = (props) => {
           </Link>
         </div>
       </form>
-     
+     </div>
     </main>
+    
   );
 };
 

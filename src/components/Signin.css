@@ -1,0 +1,68 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url(https://image.cdn2.seaart.ai/2024-01-17/cmjt67te878c73auri40/d78f1422b325e7b4d977bef2efd2668e815468b6_high.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px 40px;
+  width: 420px;
+
+}
+
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+  
+}
+
+.input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+
+}
+
+.input-box input::placeholder {
+  color: aliceblue;
+}
+
+.wrapper button {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10 rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 15px;
+  color: #333;
+  font-weight: 540;
+  margin-bottom: 10px;
+}
