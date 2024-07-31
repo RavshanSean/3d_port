@@ -11,12 +11,12 @@ const Navbar = () => {
 
           <NavLink to='/SignUp' className={({isActive}) => isActive ? 
             'text-blue-500' : 'text-black'}>
-                Sign-In
+                Sign-Up
             </NavLink>
 
             <NavLink to='/SignIn' className={({isActive}) => isActive ? 
             'text-blue-500' : 'text-black'}>
-                Sign-Up
+                Sign-In
             </NavLink>
 
         </nav>

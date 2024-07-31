@@ -1,23 +1,34 @@
-import { Route, BrowserRouter as Router, Routes } from 
-'react-router-dom';
-
-import { Home, SignIn, Projects, SignUp } from './pages';
+import { useState, createContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Home from './pages/Home'
+
+import SignupForm from './components/SignupForm';
+import SigninForm from './components/SigninForm';
+import * as authService from '../src/services/authService'; // import the authservice
+
+export const AuthedUserContext = createContext(null);
 
 const App = () => {
-  return (
-      <main className='bg-slate-300/20'>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/signin' element={<SignIn />} />
-            <Route path='/projects' element={<Projects />} />
-            <Route path='/signup' element={<SignUp />} />
-          </Routes>
-        </Router>
-      </main>
-  )
-}
+  const [user, setUser] = useState(authService.getUser()); // using the method from authservice
 
-export default App
+  const handleSignout = () => {
+    authService.signout();
+    setUser(null);
+  };
+
+  return (
+    <>
+      <AuthedUserContext.Provider value={user}>
+        <Navbar user={user} handleSignout={handleSignout} />
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path="/signup" element={<SignupForm setUser={setUser} />} />
+          <Route path="/signin" element={<SigninForm setUser={setUser} />} />
+        </Routes>
+      </AuthedUserContext.Provider>
+    </>
+  );
+};
+
+export default App;
