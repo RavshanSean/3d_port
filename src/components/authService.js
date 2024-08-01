@@ -107,7 +107,8 @@ async function update(blogPostId, FormData) {
 }
 
 
-const deleteBlogPost = async (blogPostId) => {
+
+export const deleteBlogPost = async (blogPostId) => {
   try {
     const res = await fetch(`${BASE_URL}/${blogPostId}`, {
       method: 'DELETE',
@@ -120,8 +121,6 @@ const deleteBlogPost = async (blogPostId) => {
     console.log(error);
   }
 };
-
-
 
 
 const createComment = async (blogPostId, commentFormData) => {
