@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home'
 import User from './components/User'
@@ -17,26 +17,54 @@ import * as authService from '../src/services/authService'; // import the authse
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  const handleAddPost = async (formData) => {
+    const newBlogPost = await authService.create(formData);
+    setBlogPosts([newBlogPost, ...blogPosts]);
+    navigate('/posts');
+  };
 
   const handleSignout = () => {
     authService.signout();
     setUser(null);
   };
 
+  useEffect(() => {
+    const fetchAllBlogPosts = async () => {
+      const blogPostsData = await authService.index();
+      console.log(blogPostsData);
+      setBlogPosts(blogPostsData);
+    }
+    fetchAllBlogPosts();
+  }, []);
+
   return (
     <>
       <AuthedUserContext.Provider value={user}>
         <Navbar user={user} handleSignout={handleSignout} />
         <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/user' element={<User />}/>
-
-          <Route path='/posts' element={<BlogPosts />}/>
-          <Route path='/posts/:blogPostId' element={<BlogDetails />}/>
-          <Route path='/posts/new' element={<BlogForm />}/>
-          <Route path="/posts/:blogPostId/edit" element={<BlogForm />} />
-
+          {user ? (
+            <>
+              <Route path='/' element={<Home />} />
+              <Route path='/user' element={<User />} />
+              <Route path='/posts' element={<BlogPosts blogPosts={blogPosts} />} />
+              <Route path='/posts/:blogPostId' element={<BlogDetails />} />
+              <Route path='/posts/new' element={<BlogForm handleAddPost={handleAddPost} />} />
+              <Route path="/posts/:blogPostId/edit" element={<BlogForm />} />
+            </>
+          ) : (
+            <>
+              <Route path='/' element={<Home />} />
+              <Route path='/user' element={<User />} />
+              <Route path='/posts' element={<BlogPosts blogPosts={blogPosts} />} />
+              <Route path='/posts/:blogPostId' element={<BlogDetails />} />
+            </>
+          )}
 
           <Route path="/signup" element={<SignupForm setUser={setUser} />} />
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
