@@ -73,7 +73,7 @@ useFrame(() => {
     if (Math.abs(rotationSpeed.current) < 0.001) {
       rotationSpeed.current = 0;
     }
-
+//this part is from gpt
     islandRef.current.rotation.y += rotationSpeed.current;
   } else {
     const rotation = islandRef.current.rotation.y;
