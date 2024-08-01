@@ -1,5 +1,8 @@
 const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
+const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/posts`;
+
+
 const getUser = () => {
   const token = localStorage.getItem('token');
   if (!token) return null;
@@ -51,4 +54,41 @@ const signout = () => {
   localStorage.removeItem('token');
 };
 
-export { signup, signin, getUser, signout };
+// src/services/hootService.js
+
+const index = async () => {
+  try {
+    const res = await fetch(BASE_URL);
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const show = async (blogPostId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${blogPostId}`);
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const create = async (formData) => {
+  try {
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export { signup, signin, getUser, signout, index, show, create };

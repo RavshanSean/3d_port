@@ -1,9 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const BlogPosts = (props) => {
   return (
     <>
-      <h1>working</h1>
+      <h1>Blog</h1>
+      <ul>
+        {props.blogPosts.map((post) => (
+          <li key={post._id} >
+            <Link to={`/posts/${post._id}`} >{post.title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
