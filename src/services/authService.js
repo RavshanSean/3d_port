@@ -90,5 +90,21 @@ const create = async (formData) => {
   }
 };
 
+const createComment = async (blogPostId, commentFormData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${blogPostId}/comments`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(commentFormData),
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-export { signup, signin, getUser, signout, index, show, create };
+
+export { signup, signin, getUser, signout, index, show, create, createComment };
