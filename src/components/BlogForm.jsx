@@ -20,9 +20,13 @@ const BlogForm = (props) => {
 
   return (
     <main>
+      <div className='wrapper'>
+        <h1>Blog Post</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title-input">Title</label>
+        
+        <div className='input-box'>
         <input
+        placeholder='Title'
           required
           type="text"
           name="title"
@@ -30,8 +34,12 @@ const BlogForm = (props) => {
           value={formData.title}
           onChange={handleChange}
         />
-        <label htmlFor="text-input">Text</label>
-        <textarea
+        </div>
+      
+      
+        <div className='input-box'>    
+        <input
+        placeholder='Text'
           required
           type="text"
           name="text"
@@ -39,14 +47,21 @@ const BlogForm = (props) => {
           value={formData.text}
           onChange={handleChange}
         />
-        <label htmlFor="category-input">Category</label>
+        </div>
+         
+        
+        <div className='select-container'>
+        <label htmlFor="category-input">Category:</label>
         <select
+  
+          className='select-box'
           required
           name="category"
           id="category-input"
           value={formData.category}
           onChange={handleChange}
         >
+         
           <option value="News">News</option>
           <option value="Games">Games</option>
           <option value="Music">Music</option>
@@ -54,8 +69,10 @@ const BlogForm = (props) => {
           <option value="Sports">Sports</option>
           <option value="Television">Television</option>
         </select>
+        </div>
         <button type="submit">SUBMIT</button>
       </form>
+      </div>
     </main>
   );
 };
