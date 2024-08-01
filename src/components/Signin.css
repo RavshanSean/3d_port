@@ -107,3 +107,68 @@ h1 {
   width: 320px;
   
 }
+
+.box {
+  width: 600px;
+  background: transparent;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgb(241, 236, 236);
+  color: #fff;
+  border-radius: 10px;
+  padding: 40px 40px;
+
+
+  
+
+}
+
+.body {
+   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url(https://image.cdn2.seaart.ai/2024-01-17/cmjt67te878c73auri40/d78f1422b325e7b4d977bef2efd2668e815468b6_high.webp);
+  background-size: cover;
+  background-position: center;
+  
+  
+}
+
+.box h2 {
+  background: transparent;
+  color: #fff;
+  padding: 30px 20px;
+  font-size: 40px;
+  font-weight: 700;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 0 10px rgb(241, 236, 236);
+}
+
+.box ul {
+  position: relative;
+  background: transparent;
+
+}
+
+.box ul li {
+  
+  text-align: center;
+  list-style: none;
+  padding: 50px;
+  width: 100%;
+  background: transparent;
+  box-shadow: 0 5px 25px rgba(230, 226, 226, 0.1);
+  transition: transform 0.5s;
+}
+
+.box ul li:hover {
+ 
+  transform: scale(1.1);
+  z-index: 100;
+  background: #25bcff;
+  box-shadow: 0 5px 25px rgba(0,0,0,.2);
+  color: #fff;
+}
+

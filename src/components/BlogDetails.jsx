@@ -3,6 +3,8 @@ import CommentForm from './CommentForm';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import * as authService from '../services/authService'
+import './Signin.css'; 
+
 
 const BlogDetails = (props) => {
   const { blogPostId } = useParams();
@@ -20,12 +22,19 @@ const BlogDetails = (props) => {
 
   return (
     <>
-      <h1>{currentBlogPost.title}</h1>
-      <p>{currentBlogPost.text}</p>
-      <p>Category: {currentBlogPost.category}</p>
+    
+    <div className='body'>
+      <div className='box'>
+      <h2>{currentBlogPost.title}</h2>
+      <h2>{currentBlogPost.text}</h2>
+      <h2>Category: {currentBlogPost.category}</h2>
       <CommentForm />
-      <Link to={`/posts/${blogPostId}/edit`}>Edit</Link>
-      <button>delete</button>
+      
+      <button className='button'><Link to={`/posts/${blogPostId}/edit`}>Edit</Link></button>
+      <button className='button'>delete</button>
+      </div>
+      </div>
+      
     </>
   )
 }

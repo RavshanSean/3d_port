@@ -4,7 +4,7 @@ const CommentForm = () => {
   return (
    
     <>
-      <h1>CommentsForm</h1>
+      <h2>CommentsForm</h2>
     </>
   )
 }
