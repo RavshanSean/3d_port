@@ -5,21 +5,24 @@ import { Link } from 'react-router-dom';
 import * as authService from '../services/authService'
 
 const BlogDetails = (props) => {
-    const { blogPostId } = useParams();
+  const { blogPostId } = useParams();
 
-    const [currentBlogPost, setCurrentBlogPost] = useState([]);
+  const [currentBlogPost, setCurrentBlogPost] = useState([]);
 
-    useEffect(() => {
-      const fetchBlogPost = async () => {
-        const blogPostData = await authService.show(blogPostId);
-        setCurrentBlogPost(blogPostData);
-      }
-      fetchBlogPost();
-    }, []);
+  useEffect(() => {
+    const fetchBlogPost = async () => {
+      const blogPostData = await authService.show(blogPostId);
+      console.log(blogPostData);
+      setCurrentBlogPost(blogPostData);
+    }
+    fetchBlogPost();
+  }, []);
 
   return (
     <>
       <h1>{currentBlogPost.title}</h1>
+      <p>{currentBlogPost.text}</p>
+      <p>Category: {currentBlogPost.category}</p>
       <CommentForm />
       <Link to={`/posts/${blogPostId}/edit`}>Edit</Link>
       <button>delete</button>
