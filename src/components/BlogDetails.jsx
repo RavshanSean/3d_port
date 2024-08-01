@@ -28,15 +28,26 @@ const BlogDetails = (props) => {
 
   return (
     <>
-      <h1>{currentBlogPost.title}</h1>
-      <p>{currentBlogPost.text}</p>
-      <p>Category: {currentBlogPost.category}</p>
-      <CommentForm handleAddComment={handleAddComment} />
-      {comments.map((comment, index) => (
-        <p key={index}>{comment.text}</p>
-      ))}
-      <Link to={`/posts/${blogPostId}/edit`}>Edit</Link>
-      <button>Delete</button>
+    <main>
+      <section className='section'>
+        <div className='kaka'>
+        <div className='lala'>
+          <div className='h4'></div>
+             <h4>{currentBlogPost.title}</h4> 
+             
+               <p>{currentBlogPost.text}</p>
+               <p>Category: {currentBlogPost.category}</p>
+               <div className='Form'>
+                 <CommentForm handleAddComment={handleAddComment} />
+                    {comments.map((comment, index) => (
+               <p key={index}>{comment.text}</p>
+                 ))}</div>
+               <button className='button1'><Link to={`/posts/${blogPostId}/edit`}>Edit</Link></button>
+               <button className='button2'>Delete</button>
+            </div>
+        </div>
+      </section>
+    </main>
     </>
   );
 };
