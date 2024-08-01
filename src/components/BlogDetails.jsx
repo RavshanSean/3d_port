@@ -8,35 +8,37 @@ import './Signin.css';
 
 const BlogDetails = (props) => {
   const { blogPostId } = useParams();
-
   const [currentBlogPost, setCurrentBlogPost] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const fetchBlogPost = async () => {
       const blogPostData = await authService.show(blogPostId);
       console.log(blogPostData);
       setCurrentBlogPost(blogPostData);
+      setComments(blogPostData.comments || []);
     }
     fetchBlogPost();
   }, []);
 
+  const handleAddComment = async (commentFormData) => {
+    const newComment = await authService.createComment(blogPostId, commentFormData);
+    setComments([...comments, newComment]);
+  };
+
   return (
     <>
-    
-    <div className='body'>
-      <div className='box'>
-      <h2>{currentBlogPost.title}</h2>
-      <h2>{currentBlogPost.text}</h2>
-      <h2>Category: {currentBlogPost.category}</h2>
-      <CommentForm />
-      
-      <button className='button'><Link to={`/posts/${blogPostId}/edit`}>Edit</Link></button>
-      <button className='button'>delete</button>
-      </div>
-      </div>
-      
+      <h1>{currentBlogPost.title}</h1>
+      <p>{currentBlogPost.text}</p>
+      <p>Category: {currentBlogPost.category}</p>
+      <CommentForm handleAddComment={handleAddComment} />
+      {comments.map((comment, index) => (
+        <p key={index}>{comment.text}</p>
+      ))}
+      <Link to={`/posts/${blogPostId}/edit`}>Edit</Link>
+      <button>Delete</button>
     </>
-  )
-}
+  );
+};
 
 export default BlogDetails
