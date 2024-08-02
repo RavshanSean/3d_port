@@ -2,11 +2,8 @@ import { NavLink } from "react-router-dom"
 
 
 const Navbar = (props) => {
-  console.log(props.user);
   return (
     <header className="header">
-
-
 
       <NavLink to="/" className="w-16 h-16 rounded-lg bg-white
           items-center justify-center flex font-bold shadow-md" id="homeContainer">
@@ -27,16 +24,19 @@ const Navbar = (props) => {
           Blog Posts
         </NavLink>
 
+        {!(props.user) ? (
+          <NavLink to='/SignUp' className={({ isActive }) => isActive ?
+            'text-white' : 'text-black'}>
+            Sign-Up
+          </NavLink>
+        ) : null}
 
-        <NavLink to='/SignUp' className={({ isActive }) => isActive ?
-          'text-white' : 'text-black'}>
-          Sign-Up
-        </NavLink>
-
-        <NavLink to='/SignIn' className={({ isActive }) => isActive ?
-          'text-white' : 'text-black'}>
-          Sign-In
-        </NavLink>
+        {!(props.user) ? (
+          <NavLink to='/SignIn' className={({ isActive }) => isActive ?
+            'text-white' : 'text-black'}>
+            Sign-In
+          </NavLink>
+        ) : null}
 
         {props.user ? (
           <NavLink to='/' onClick={props.handleSignout} className={({ isActive }) => isActive ?
