@@ -9,7 +9,7 @@ import BlogForm from './components/BlogForm';
 
 import SignupForm from './components/SignupForm';
 import SigninForm from './components/SigninForm';
-import * as authService from './services/authService';
+import * as authService from '../src/services/authService'; // import the authservice
 
 
 
@@ -19,7 +19,7 @@ export const AuthedUserContext = createContext(null);
 const App = () => {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState(authService.getUser());
+  const [user, setUser] = useState(authService.getUser()); // using the method from authservice
 
   const [blogPosts, setBlogPosts] = useState([]);
 
@@ -29,15 +29,6 @@ const App = () => {
     navigate('/posts');
   };
 
-
-const handleDeleteBlogPost = async (blogPostId) => {
-  const deletedBlogPost = await authService.deleteBlogPost(blogPostId);
- 
-  setBlogPosts(blogPosts.filter((blogPost) => blogPost._id !== deletedBlogPost._id));
-  navigate('/posts');
-  //glenn helping 
-  fetchAllBlogPosts();
-};
 
 
 const handleUpdateBlogPost = async (blogPostId, formData) => {
@@ -54,16 +45,12 @@ const handleUpdateBlogPost = async (blogPostId, formData) => {
     setUser(null);
   };
 
-//Glenn helping to fix bugs
-const fetchAllBlogPosts = async () => {
-  const blogPostsData = await authService.index();
-  console.log(blogPostsData);
-  setBlogPosts(blogPostsData);
-}
-
-
   useEffect(() => {
-///this no good dont put nothing inside 
+    const fetchAllBlogPosts = async () => {
+      const blogPostsData = await authService.index();
+      console.log(blogPostsData);
+      setBlogPosts(blogPostsData);
+    }
     fetchAllBlogPosts();
   }, []);
 
@@ -77,7 +64,7 @@ const fetchAllBlogPosts = async () => {
               <Route path='/' element={<Home />} />
               <Route path='/user' element={<User />} />
               <Route path='/posts' element={<BlogPosts blogPosts={blogPosts} />} />
-              <Route path='/posts/:blogPostId' element={<BlogDetails user={user} handleDeleteBlogPost={handleDeleteBlogPost}/>} />
+              <Route path='/posts/:blogPostId' element={<BlogDetails />} />
               <Route path='/posts/new' element={<BlogForm handleAddPost={handleAddPost} />} />
               <Route path="/posts/:blogPostId/edit" element={<BlogForm handleUpdateBlogPost={handleUpdateBlogPost} />} />
             </>

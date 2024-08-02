@@ -1,9 +1,13 @@
 // src/components/HootForm/HootForm.jsx
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import * as authService from '../services/authService'
 import './Signin.css'; 
 
 const BlogForm = (props) => {
+  const { blogPostId } = useParams();
+
   const [formData, setFormData] = useState({
     title: '',
     text: '',
@@ -16,13 +20,26 @@ const BlogForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddPost(formData);
+    if (blogPostId) {
+      props.handleUpdateBlogPost(blogPostId, formData);
+    } else {
+      props.handleAddPost(formData);
+    }
   };
+
+  useEffect(() => {
+    const fetchBlogPost = async () => {
+      const blogPostData = await authService.show(blogPostId);
+      setFormData(blogPostData);
+    }
+    if (blogPostId) fetchBlogPost();
+  }, [blogPostId]);
+  
 
   return (
     <main>
       <div className='wrapper'>
-        <h1>Blog Post</h1>
+        <h1>{blogPostId ? 'Edit Post' : 'New Post'}</h1>
       <form onSubmit={handleSubmit}>
         
         <div className='input-box'>
