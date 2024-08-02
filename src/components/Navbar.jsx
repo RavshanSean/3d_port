@@ -9,8 +9,8 @@ const Navbar = (props) => {
 
 
       <NavLink to="/" className="w-16 h-16 rounded-lg bg-white
-          items-center justify-center flex font-bold shadow-md">
-        <p className="blue-gradient_text">Home</p>
+          items-center justify-center flex font-bold shadow-md" id="homeContainer">
+        <p className="blue-gradient_text" id="home">Home</p>
       </NavLink>
       <nav className="flex text-lg gap-7 font-medium">
 
