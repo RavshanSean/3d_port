@@ -9,7 +9,7 @@ BlogApp is a platform that allows users to create, read, update, and delete blog
 
 ## Getting Started
 
-- **Deployed App:** [Link to Deployed App]()
+- **Deployed App:** [Link to Deployed App](https://dada-blog.netlify.app/)
 - **Planning Materials:** [Link to Planning Materials](https://trello.com/b/WbqYHLYa/ga-project-3)
 - **Back-end Repository:** [Link to Back-end Repository](https://github.com/sedykhvitaliy/React-Blog)
 
