@@ -9,6 +9,31 @@ main {
   background-position: center;
 }
 
+header nav * {
+  transition: 0.2s;
+}
+
+header nav *:hover {
+  font-size: 1.2rem;
+}
+
+button {
+  transition: 0.2s;
+}
+
+button:hover {
+  font-size: 1.05rem;
+  padding: 0;
+}
+
+option {
+  color: #333;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
 .wrapper {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, .2);
@@ -31,7 +56,11 @@ main {
   width: 100%;
   height: 50px;
   margin: 30px 0;
-  
+  transition: 0.2s;
+}
+
+.wrapper .input-box:hover {
+  padding: 1.5px;
 }
 
 .input-box input{
@@ -61,7 +90,7 @@ main {
   border-radius: 40px;
   box-shadow: 0 0 10 rgba(0, 0, 0, .1);
   cursor: pointer;
-  font-size: 15px;
+  /* font-size: 15px; */
   color: #333;
   font-weight: 540;
   margin-bottom: 10px;
@@ -107,3 +136,180 @@ h1 {
   width: 320px;
   
 }
+
+.box {
+  width: 600px;
+  background: transparent;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgb(241, 236, 236);
+  color: #fff;
+  border-radius: 10px;
+  padding: 40px 40px;
+}
+
+.box h2 {
+  text-align: center;
+}
+
+.body {
+   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url(https://image.cdn2.seaart.ai/2024-01-17/cmjt67te878c73auri40/d78f1422b325e7b4d977bef2efd2668e815468b6_high.webp);
+  background-size: cover;
+  background-position: center;
+  
+  
+}
+
+.box h2 {
+  background: transparent;
+  color: #fff;
+  padding: 30px 20px;
+  font-size: 40px;
+  font-weight: 700;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 0 10px rgb(241, 236, 236);
+}
+
+.box ul {
+  position: relative;
+  background: transparent;
+
+}
+
+.box ul li {
+  
+  text-align: center;
+  list-style: none;
+  padding: 50px;
+  width: 100%;
+  background: transparent;
+  box-shadow: 0 5px 25px rgba(230, 226, 226, 0.1);
+  transition: transform 0.5s;
+}
+
+.box ul li:hover {
+ 
+  transform: scale(1.1);
+  z-index: 100;
+  background: #25bcff;
+  box-shadow: 0 5px 25px rgba(0,0,0,.2);
+  color: #fff;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url(https://image.cdn2.seaart.ai/2024-01-17/cmjt67te878c73auri40/d78f1422b325e7b4d977bef2efd2668e815468b6_high.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+.kaka {
+  position: relative;
+  width: 600px;
+  height: 650px;
+  background: transparent;
+  backdrop-filter: blur(30px);
+ 
+padding: 20px 30px 50px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.kaka h4{
+  
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+
+}
+
+.kaka p {
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+ 
+  
+
+}
+
+.lala {
+  position: relative;
+  margin: 30px 0;
+  width: 500px;
+ 
+
+}
+
+.Form {
+  border-bottom: 2px solid #fff;
+  margin: 15px 0;
+  text-align: center;
+
+}
+
+.button1 {
+  margin: 5px 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  
+}
+
+.button2 {
+  margin: 5px 0;
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    
+  }
+
+  .submit {
+    color: red;
+  }
+
+  #home {
+    transition: 0.2s;
+  }
+
+  #home:hover {
+    font-size: 1.05rem;
+  }
