@@ -3,7 +3,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import './main.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home'
-import User from './components/User'
 import BlogPosts from './components/BlogPosts';
 import BlogDetails from './components/BlogDetails';
 import BlogForm from './components/BlogForm';
