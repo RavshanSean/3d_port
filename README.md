@@ -1,6 +1,6 @@
 # BlogApp
 
-![BlogApp Screenshot]()
+![BlogApp Screenshot](https://files.slack.com/files-pri/T0351JZQ0-F07FA2Z6HH9/screenshot_2024-08-02_at_12.23.17___pm.png)
 
 ## Description
 
