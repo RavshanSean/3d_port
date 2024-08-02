@@ -57,7 +57,6 @@ const App = () => {
   //Glenn helping to fix bugs
   const fetchAllBlogPosts = async () => {
     const blogPostsData = await authService.index();
-    console.log(blogPostsData);
     setBlogPosts(blogPostsData);
   }
 
@@ -74,7 +73,6 @@ const App = () => {
           {user ? (
             <>
               <Route path='/' element={<Home />} />
-              <Route path='/user' element={<User />} />
               <Route path='/posts' element={<BlogPosts blogPosts={blogPosts} />} />
               <Route path='/posts/:blogPostId' element={<BlogDetails user={user} handleDeleteBlogPost={handleDeleteBlogPost} />} />
               <Route path='/posts/new' element={<BlogForm handleAddPost={handleAddPost} />} />
@@ -83,7 +81,6 @@ const App = () => {
           ) : (
             <>
               <Route path='/' element={<Home />} />
-              <Route path='/user' element={<User />} />
               <Route path='/posts' element={<BlogPosts blogPosts={blogPosts} />} />
               <Route path='/posts/:blogPostId' element={<BlogDetails />} />
             </>
