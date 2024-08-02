@@ -16,7 +16,7 @@ const CommentForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className='lable'>
-      <label htmlFor="text-input">Your comment:</label>
+        <label htmlFor="text-input">Your comment:</label>
       </div>
       <textarea
         required
@@ -26,9 +26,7 @@ const CommentForm = (props) => {
         value={formData.text}
         onChange={handleChange}
       />
-      <div className='submit'>
-      <button type="submit">SUBMIT COMMENT</button>
-      </div>
+      <button type="submit" className='submit'>Submit Comment</button>
     </form>
   );
 };

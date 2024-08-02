@@ -6,7 +6,6 @@ import CommentForm from './CommentForm';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import * as authService from '../services/authService';
-import './Signin.css';
 
 
 const BlogDetails = (props) => {
@@ -20,10 +19,9 @@ const BlogDetails = (props) => {
   useEffect(() => {
     const fetchBlogPost = async () => {
       const blogPostData = await authService.show(blogPostId);
-      console.log(blogPostData);
       setCurrentBlogPost(blogPostData);
       setComments(blogPostData.comments || []);
-    } // glenn said not good practics better outside of use effect
+    }
     fetchBlogPost();
   }, []);
   const handleAddComment = async (commentFormData) => {
@@ -31,7 +29,7 @@ const BlogDetails = (props) => {
     setComments([...comments, newComment]);
   };
   const userId = props.user ? props.user._id : null;
- 
+
   return (
     <>
       <main>
@@ -47,8 +45,8 @@ const BlogDetails = (props) => {
                 {comments.map((comment, index) => (
                   <p key={index}>{comment.text}</p>
                 ))}</div>
-              {userId == currentBlogPost.author?._id ? <button className='button1'><Link to={`/posts/${blogPostId}/edit`}>Edit</Link></button> : null}
-              {userId == currentBlogPost.author?._id ? <button onClick={() => props.handleDeleteBlogPost(blogPostId)} className='button2'>Delete</button> : null}
+              {userId == currentBlogPost.author?._id ? <button className='button1'><Link to={`/posts/${blogPostId}/edit`}>Edit Post</Link></button> : null}
+              {userId == currentBlogPost.author?._id ? <button onClick={() => props.handleDeleteBlogPost(blogPostId)} className='button2'>Delete Post</button> : null}
               {/* I believe we learned about optional chaining, but I got help from this website https://refine.dev/blog/common-usestate-mistakes-and-how-to-avoid/#updating-usestate-directly */}
             </div>
           </div>

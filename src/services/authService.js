@@ -54,8 +54,6 @@ const signout = () => {
   localStorage.removeItem('token');
 };
 
-// src/services/hootService.js
-
 const index = async () => {
   try {
     const res = await fetch(BASE_URL);
@@ -113,7 +111,7 @@ const deleteBlogPost = async (blogPostId) => {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
-      }, 
+      },
     });
     return res.json();
   } catch (error) {
